@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "dile-password",
+      "description": "A component to implement a styled input password form field",
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "The name to the input field",
+          "default": ""
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "description": "Text to the label",
+          "default": ""
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Text to the input",
+          "default": ""
+        },
+        {
+          "name": "placeholder",
+          "type": "String",
+          "description": "Text to the input placeholder",
+          "default": ""
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "description": "Set disabled or enabled",
+          "default": false
+        },
+        {
+          "name": "errored",
+          "type": "Boolean",
+          "description": "Set an errored style to the input",
+          "default": false
+        }
+      ],
+      "events": ["enter-pressed", "input"]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "dile-password",
+  "version": "1.0.0",
+  "description": "Webcomponent dile-password following open-wc recommendations",
+  "author": "dile-password",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "storybook": "start-storybook",
+    "storybook:build": "build-storybook"
+  },
+  "dependencies": {
+    "dile-input": "^2.6.0",
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.23.0"
+  }
+}
