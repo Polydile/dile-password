@@ -1,8 +1,8 @@
 # \<dile-password>
 
-This component extends <dile-input> to create a input password form field.
+This component extends ```<dile-input>``` to create a input password form field.
 
-Please refer to the [<dile-input> component documentation](https://github.com/Polydile/dile-input) to learn to use <dile-password>.
+Please refer to the [```<dile-input>``` component documentation](https://github.com/Polydile/dile-input) to learn to use ```<dile-password>```.
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
