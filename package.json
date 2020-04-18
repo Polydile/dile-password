@@ -12,7 +12,7 @@
     "storybook:build": "build-storybook"
   },
   "dependencies": {
-    "dile-input": "^2.6.0",
+    "dile-input": "^3.0.1",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2"
   },
