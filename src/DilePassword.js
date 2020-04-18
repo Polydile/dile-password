@@ -1,5 +1,5 @@
 import { html } from 'lit-element';
-import { DileInput } from 'dile-input/dile-input';
+import { DileInput } from 'dile-input';
 
 export class DilePassword extends DileInput {
 
