@@ -22,6 +22,20 @@ export class DilePassword extends DileInput {
     this._strengthLabel = '';
   }
 
+  // Constants for password strength labels and classes
+  static get _STRENGTH_LABELS() {
+    return ['', 'Weak', 'Fair', 'Good', 'Strong'];
+  }
+
+  static get _STRENGTH_CLASSES() {
+    return ['', 'weak', 'fair', 'good', 'strong'];
+  }
+
+  // Normalization factor to map raw scores (0-6) to strength levels (0-4)
+  static get _SCORE_NORMALIZATION_FACTOR() {
+    return 1.5;
+  }
+
   static get styles() {
     return [
       super.styles,
@@ -68,35 +82,42 @@ export class DilePassword extends DileInput {
 
   /**
    * Calculate password strength based on various criteria
-   * Returns a score from 0 to 4
+   * 
+   * The algorithm evaluates passwords based on:
+   * - Length: awards points for passwords >= 8 chars and >= 12 chars
+   * - Character variety: awards points for lowercase, uppercase, numbers, and special characters
+   * 
+   * @param {string} password - The password string to evaluate
+   * @returns {Object} Strength evaluation object with properties:
+   *   - score {number}: Normalized strength score (0-4)
+   *   - label {string}: Human-readable strength label ('Weak', 'Fair', 'Good', 'Strong', or empty)
+   *   - class {string}: CSS class name for styling ('weak', 'fair', 'good', 'strong', or empty)
+   *   - percentage {number}: Strength as percentage (0-100)
    */
   _calculatePasswordStrength(password) {
     if (!password || password.length === 0) {
-      return { score: 0, label: '' };
+      return { score: 0, label: '', class: '', percentage: 0 };
     }
 
     let score = 0;
     
-    // Length criteria
+    // Length criteria (max 2 points)
     if (password.length >= 8) score++;
     if (password.length >= 12) score++;
     
-    // Character variety criteria
+    // Character variety criteria (max 4 points)
     if (/[a-z]/.test(password)) score++; // lowercase
     if (/[A-Z]/.test(password)) score++; // uppercase
     if (/[0-9]/.test(password)) score++; // numbers
     if (/[^a-zA-Z0-9]/.test(password)) score++; // special characters
     
-    // Normalize score to 0-4 range
-    const normalizedScore = Math.min(4, Math.floor(score / 1.5));
-    
-    const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
-    const classes = ['', 'weak', 'fair', 'good', 'strong'];
+    // Normalize score from 0-6 range to 0-4 range
+    const normalizedScore = Math.min(4, Math.floor(score / DilePassword._SCORE_NORMALIZATION_FACTOR));
     
     return {
       score: normalizedScore,
-      label: labels[normalizedScore],
-      class: classes[normalizedScore],
+      label: DilePassword._STRENGTH_LABELS[normalizedScore],
+      class: DilePassword._STRENGTH_CLASSES[normalizedScore],
       percentage: (normalizedScore / 4) * 100
     };
   }
