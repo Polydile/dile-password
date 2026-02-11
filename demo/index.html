@@ -5,23 +5,57 @@
   <style>
     body {
       background: #fafafa;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .demo-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+    }
+    h2 {
+      color: #666;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    .demo-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <div id="demo"></div>
+  <div class="demo-container">
+    <h1>dile-password Component Demo</h1>
+    
+    <div class="demo-section">
+      <h2>Password with Strength Indicator</h2>
+      <dile-password 
+        label="Enter Password" 
+        placeholder="Type your password"
+        showStrength>
+      </dile-password>
+      <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+        Try typing different passwords to see the strength indicator change!
+      </p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Password without Strength Indicator</h2>
+      <dile-password 
+        label="Password" 
+        placeholder="Standard password field">
+      </dile-password>
+    </div>
+  </div>
 
   <script type="module">
-    import { html, render } from 'lit-html';
     import '../dile-password.js';
-
-    const title = 'Hello owc World!';
-    render(
-      html`
-        <dile-password label="Clave"></dile-password>
-      `,
-      document.querySelector('#demo')
-    );
   </script>
 </body>
 </html>
